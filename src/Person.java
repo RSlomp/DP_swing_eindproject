@@ -1,5 +1,5 @@
 
-public abstract class Person {
+public class Person {
     private String firstname;
     private String lastname;
     private DOB date_of_birth;
