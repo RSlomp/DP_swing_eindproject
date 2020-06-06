@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Actor extends Person{
+public class Actor extends Person{
     private List<Role> roles = new ArrayList<>();
 
     public Actor(String firstname, String lastname, int dob_day, int dob_month, int dob_year) {
