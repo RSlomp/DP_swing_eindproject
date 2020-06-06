@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ProductionCompany {
+public class ProductionCompany {
     private String name;
     private List<Person> employees = new ArrayList<>();
 
