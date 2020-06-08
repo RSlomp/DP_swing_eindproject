@@ -56,7 +56,7 @@ public class Person {
         }
 
         public String get_date(){
-            return String.valueOf(this.day) + "-" + String.valueOf(this.month) + "-" + String.valueOf(this.year)
+            return this.day + "-" + this.month + "-" + this.year;
         }
     }
 }
