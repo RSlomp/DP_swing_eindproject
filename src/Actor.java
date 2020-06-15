@@ -4,8 +4,8 @@ import java.util.List;
 public class Actor extends Person{
     private List<Role> roles = new ArrayList<>();
 
-    public Actor(String firstname, String lastname, int dob_day, int dob_month, int dob_year) {
-        super(firstname, lastname, dob_day, dob_month, dob_year);
+    public Actor(String firstname, String lastname, int dob_year, int dob_month, int dob_day) {
+        super(firstname, lastname, dob_year, dob_month, dob_day);
     }
 
     public void add_role(Film film, String role_name, String role_type){

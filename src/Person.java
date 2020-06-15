@@ -4,14 +4,14 @@ public class Person {
     private String lastname;
     private DOB date_of_birth;
 
-    public Person(String firstname, String lastname, int dob_day, int dob_month, int dob_year){
+    public Person(String firstname, String lastname, int dob_year, int dob_month, int dob_day){
         this.firstname = firstname;
         this.lastname = lastname;
-        this.date_of_birth = new DOB(dob_day, dob_month, dob_year);
+        this.date_of_birth = new DOB(dob_year, dob_month, dob_day);
     }
-    public Person(String name, int dob_day, int dob_month, int dob_year){
+    public Person(String name, int dob_year, int dob_month, int dob_day){
         set_name(name);
-        this.date_of_birth = new DOB(dob_day, dob_month, dob_year);
+        this.date_of_birth = new DOB(dob_year, dob_month, dob_day);
     }
 
     public String get_firstname(){
@@ -37,7 +37,7 @@ public class Person {
         private int month;
         private int day;
 
-        protected DOB(int day, int month, int year){
+        protected DOB(int year, int month, int day){
             this.day = day;
             this.month = month;
             this.year = year;
@@ -56,7 +56,7 @@ public class Person {
         }
 
         public String get_date(){
-            return this.day + "-" + this.month + "-" + this.year;
+            return this.year + "-" + this.month + "-" + this.day;
         }
     }
 }

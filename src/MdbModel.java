@@ -16,14 +16,14 @@ public class MdbModel {
 
     public void create_film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors, List<Person> crew){
         List<Film> films_new = this.films;
-        films_new.add(new Film(title, year, country, budget, production_company, actors, crew));
+        films_new.add(new Film(title, year, country, budget, production_company, actors));
         support.firePropertyChange("films", this.films, films_new);
         this.films = films_new;
     }
 
-    public void create_actor(String firstname, String lastname, int dob_day, int dob_month, int dob_year){
+    public void create_actor(String firstname, String lastname, int dob_year, int dob_month, int dob_day){
         List<Actor> actors_new = this.actors;
-        actors_new.add(new Actor(firstname, lastname, dob_day, dob_month, dob_year));
+        actors_new.add(new Actor(firstname, lastname, dob_year, dob_month, dob_day));
         support.firePropertyChange("actors", this.actors, actors_new);
         this.actors = actors_new;
     }
