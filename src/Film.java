@@ -2,14 +2,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Film {
-    private String title;
-    private int year;
-    private String country;
-    private int budget;
-    private ProductionCompany production_company;
+    private final String title;
+    private final int year;
+    private final String country;
+    private final int budget;
+    private final ProductionCompany production_company;
     private List<Actor> actors = new ArrayList<>();
 
-    public Film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors, List<Person> crew) {
+    public Film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors) {
         this.title = title;
         this.year = year;
         this.country = country;
