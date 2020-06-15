@@ -43,9 +43,9 @@ public class Film {
     }
 
     public Actor get_actor_by_name(String fullname){
-        for (int i = 0; i < this.actors.size(); i++) {
-            if(this.actors.get(i).get_fullname().equals(fullname)) {
-                return this.actors.get(i);
+        for (Actor actor : this.actors) {
+            if (actor.get_fullname().equals(fullname)) {
+                return actor;
             }
         }
         return null;
