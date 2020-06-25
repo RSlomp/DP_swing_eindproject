@@ -1,10 +1,12 @@
+package mvc;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MdbModel {
-    private PropertyChangeSupport support;
+    private static PropertyChangeSupport support;
 
     private List<Film> films = new ArrayList<>();
     private List<Actor> actors = new ArrayList<>();
@@ -12,6 +14,10 @@ public class MdbModel {
 
     public MdbModel() {
         support = new PropertyChangeSupport(this);
+    }
+
+    public void add_actor(Actor actor){
+        this.actors.add(actor);
     }
 
     public void create_film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors, List<Person> crew){

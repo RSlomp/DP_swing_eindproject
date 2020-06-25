@@ -1,3 +1,4 @@
+package mvc;
 
 public class Person {
     private String firstname;
