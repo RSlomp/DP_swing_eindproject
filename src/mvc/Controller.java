@@ -27,7 +27,7 @@ public class Controller implements PropertyChangeListener {
             public void run() {
                 try {
                     Controller controller = new Controller();
-                    CreateActorView myWindow = controller.view.create_actor_view;
+                    CreateFilmView myWindow = controller.view.create_film_view;
                     myWindow.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -25,9 +25,14 @@ public class CreatePcView extends Frame implements WindowListener, ActionListene
         return this.name_txt.getText();
     }
 
+    public void create_object(String name){
+        model.create_production_company(name);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String name = get_name();
+        create_object(name);
     }
 
     @Override
@@ -67,16 +72,16 @@ public class CreatePcView extends Frame implements WindowListener, ActionListene
     }
 
     private void initialize() {
-        this.frame = GenUIElements.gen_frame(this.title, 50, 50, 350, 250);
+        this.frame = GenUIElements.gen_frame(this.title, 50, 50, 280, 150);
 
-        JLabel name_label = GenUIElements.gen_label("Company name", 25, 31, 86, 14);
+        JLabel name_label = GenUIElements.gen_label("Company name", 25, 31, 95, 14);
         frame.getContentPane().add(name_label);
 
-        this.name_txt = GenUIElements.gen_text_field(98, 28, 86, 20);
+        this.name_txt = GenUIElements.gen_text_field(120, 28, 120, 20);
         frame.getContentPane().add(this.name_txt);
         this.name_txt.setColumns(10);
 
-        this.execute_button = GenUIElements.gen_button("Create", 25, 150, 290, 30);
+        this.execute_button = GenUIElements.gen_button("Create", 25, 70, 215, 30);
         this.frame.getContentPane().add(this.execute_button);
     }
 }
