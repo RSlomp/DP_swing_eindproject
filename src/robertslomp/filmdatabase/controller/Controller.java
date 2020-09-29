@@ -1,4 +1,9 @@
-package mvc;
+package robertslomp.filmdatabase.controller;
+
+import robertslomp.filmdatabase.model.Actor;
+import robertslomp.filmdatabase.model.MdbModel;
+import robertslomp.filmdatabase.view.CreateFilmView;
+import robertslomp.filmdatabase.view.MdbView;
 
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
@@ -12,6 +17,14 @@ public class Controller implements PropertyChangeListener {
     public Controller(){
         model.addPropertyChangeListener(this);
     }
+
+    /*public Actor[] get_actors(){
+        return model.get_actors();
+    }
+
+    public Actor[] get_companies(){
+        return model.get_actors();
+    }*/
 
 
     @Override

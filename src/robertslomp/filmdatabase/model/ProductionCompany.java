@@ -1,4 +1,4 @@
-package mvc;
+package robertslomp.filmdatabase.model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,9 @@
-package mvc;
+package robertslomp.filmdatabase.view;
+
+import robertslomp.filmdatabase.model.Actor;
+import robertslomp.filmdatabase.model.MdbModel;
+import robertslomp.filmdatabase.model.ProductionCompany;
+import robertslomp.filmdatabase.util.ElementsFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,13 +18,19 @@ public class CreateFilmView extends Frame implements WindowListener, ActionListe
     private JTextField title_txt;
     private JTextField budget_txt;
     private JComboBox<String> country_box;
+    private ProductionCompany[] companies;
     private JComboBox<String> company_box;
-
+    private Actor[] actors;
+    private JPanel actors_check;
     private JButton execute_button;
-    private final MdbModel model = new mvc.MdbModel();
+    private final MdbModel model = new MdbModel();
+    //private final Controller controller = new robertslomp.mvc.Controller();
+
 
     public CreateFilmView(String title){
         super(title);
+        //this.actors = controller.get_actors();
+        //this.companies = controller.get_companies();
         initialize();
     }
 
@@ -63,36 +74,59 @@ public class CreateFilmView extends Frame implements WindowListener, ActionListe
                 "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu",
                 "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)",
                 "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"};
+        //String[] companies = companies_to_string(this.companies);
+        //String[] actors = actors_to_string(this.actors);
+        String[] companies = {"A", "B"};
+        String[] actors = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+                "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
-        this.frame = GenUIElements.gen_frame(this.window_title, 50, 50, 350, 250);
+        this.frame = ElementsFactory.gen_frame(this.window_title, 50, 50, 400, 400 + (25 * actors.length));
 
-        JLabel title_label = GenUIElements.gen_label("Title", 25, 31, 86, 14);
+        JLabel title_label = ElementsFactory.gen_label("Title", 25, 31, 86, 14);
         frame.getContentPane().add(title_label);
 
-        JLabel budget_label = GenUIElements.gen_label("Budget", 25, 68, 86, 14);
+        JLabel budget_label = ElementsFactory.gen_label("Budget", 25, 68, 86, 14);
         frame.getContentPane().add(budget_label);
 
-        JLabel country_label = GenUIElements.gen_label("Country", 25, 105, 86, 14);
+        JLabel country_label = ElementsFactory.gen_label("Country", 25, 105, 86, 14);
         frame.getContentPane().add(country_label);
 
-        JLabel prod_comp_label = GenUIElements.gen_label("Production Company", 25, 142, 86, 14);
+        JLabel prod_comp_label = ElementsFactory.gen_label("Production Company", 25, 142, 146, 14);
         frame.getContentPane().add(prod_comp_label);
 
-        this.title_txt = GenUIElements.gen_text_field(98, 28, 86, 20);
+        this.title_txt = ElementsFactory.gen_text_field(168, 28, 146, 20);
         frame.getContentPane().add(this.title_txt);
         this.title_txt.setColumns(10);
 
-        this.budget_txt = GenUIElements.gen_text_field(98, 65, 86, 20);
+        this.budget_txt = ElementsFactory.gen_text_field(168, 65, 146, 20);
         frame.getContentPane().add(this.budget_txt);
         this.budget_txt.setColumns(10);
 
-        this.country_box = GenUIElements.gen_combo_box(countries, 98, 102, 170, 20);
+        this.country_box = ElementsFactory.gen_combo_box(countries, 168, 102, 170, 20);
         frame.getContentPane().add(this.country_box);
 
-        /*this.company_box = GenUIElements.gen_combo_box(months, 155, 102, 80, 20);
-        frame.getContentPane().add(this.company_box);*/
+        this.company_box = ElementsFactory.gen_combo_box(companies, 168, 140, 170, 20);
+        frame.getContentPane().add(this.company_box);
 
+        this.actors_check = ElementsFactory.gen_checkbox_list(actors, 168, 177, 80, (25 * actors.length));
+        frame.getContentPane().add(this.actors_check);
 
+    }
+
+    private String[] companies_to_string(ProductionCompany[] companies){
+        String[] company_names = new String[companies.length];
+        for (int i = 0; i < companies.length; i++){
+            company_names[i] = companies[i].get_name();
+        }
+        return company_names;
+    }
+
+    private String[] actors_to_string(Actor[] actors){
+        String[] company_names = new String[actors.length];
+        for (int i = 0; i < actors.length; i++){
+            company_names[i] = actors[i].get_fullname();
+        }
+        return company_names;
     }
 
     @Override

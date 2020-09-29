@@ -1,4 +1,4 @@
-package mvc;
+package robertslomp.filmdatabase.model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -15,6 +15,14 @@ public class MdbModel {
     public MdbModel() {
         support = new PropertyChangeSupport(this);
     }
+
+    /*public Actor[] get_actors(){
+        return toArray(this.actors);
+    }
+
+    public ProductionCompany[] get_companies(){
+        return toArray(this.production_companies);
+    }*/
 
     public void add_actor(Actor actor){
         this.actors.add(actor);

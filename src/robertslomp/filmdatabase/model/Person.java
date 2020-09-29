@@ -1,4 +1,4 @@
-package mvc;
+package robertslomp.filmdatabase.model;
 
 public class Person {
     private String firstname;
