@@ -1,13 +1,12 @@
 package robertslomp.filmdatabase.view;
 
-import robertslomp.filmdatabase.model.MdbModel;
+import robertslomp.filmdatabase.controller.Controller;
 import robertslomp.filmdatabase.util.ElementsFactory;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.WindowEvent;
 
-public class CreateActorView extends CreateView {
+public class CreateActorView extends View {
     private final String title;
     public JFrame frame;
     private JTextField firstname_txt;
@@ -16,7 +15,7 @@ public class CreateActorView extends CreateView {
     private JComboBox<String> month_box;
     private JComboBox<String> year_box;
     private JButton execute_button;
-    private final MdbModel model = new MdbModel();
+    private final Controller controller = new Controller();
 
     public CreateActorView(String title) {
         super(title);
@@ -50,7 +49,7 @@ public class CreateActorView extends CreateView {
 
 
     public void create_object(String firstname, String lastname, int[] dob){
-        model.create_actor(firstname, lastname, dob[0], dob[1], dob[2]);
+        controller.create_actor(firstname, lastname, dob);
     }
 
 
@@ -61,13 +60,6 @@ public class CreateActorView extends CreateView {
         int[] dob = get_dob();
 
         create_object(firstname, lastname, dob);
-    }
-
-
-    @Override
-    public void windowClosing(WindowEvent e) {
-        dispose();
-        System.exit(0);
     }
 
 

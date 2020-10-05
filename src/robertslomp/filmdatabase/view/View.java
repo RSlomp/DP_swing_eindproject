@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+
+//Template Pattern
 public abstract class View extends Frame implements WindowListener, ActionListener {
     public View(String title) {
         super(title);
@@ -15,6 +17,8 @@ public abstract class View extends Frame implements WindowListener, ActionListen
     }
 
     public void windowClosing(WindowEvent e) {
+        dispose();
+        System.exit(0);
     }
 
     public void windowOpened(WindowEvent e) {

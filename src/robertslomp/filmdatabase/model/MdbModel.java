@@ -10,30 +10,29 @@ public class MdbModel {
 
     private List<Film> films = new ArrayList<>();
     private List<Actor> actors = new ArrayList<>();
-    private List<ProductionCompany> production_companies = new ArrayList<>();
 
     public MdbModel() {
         support = new PropertyChangeSupport(this);
     }
 
-    /*public Actor[] get_actors(){
-        return toArray(this.actors);
-    }
-
-    public ProductionCompany[] get_companies(){
-        return toArray(this.production_companies);
-    }*/
 
     public void add_actor(Actor actor){
         this.actors.add(actor);
     }
 
-    public void create_film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors, List<Person> crew){
+
+    public List<Actor> get_all_actors(){
+        return this.actors;
+    }
+
+
+    public void create_film(String title, int year, String country, int budget, List<Actor> actors){
         List<Film> films_new = this.films;
-        films_new.add(new Film(title, year, country, budget, production_company, actors));
+        films_new.add(new Film(title, year, country, budget, actors));
         support.firePropertyChange("films", this.films, films_new);
         this.films = films_new;
     }
+
 
     public void create_actor(String firstname, String lastname, int dob_year, int dob_month, int dob_day){
         List<Actor> actors_new = this.actors;
@@ -42,16 +41,71 @@ public class MdbModel {
         this.actors = actors_new;
     }
 
-    public void create_production_company(String name){
-        List<ProductionCompany> pr_comps_new = this.production_companies;
-        pr_comps_new.add(new ProductionCompany(name));
-        support.firePropertyChange("production_companies", this.production_companies, pr_comps_new);
-        this.production_companies = pr_comps_new;
+
+    public List<Film> get_film_by_title(String title){
+        List<Film> films_new = this.films;
+        List<Film> result = new ArrayList<>();
+        for (Film film : films_new){
+            if (film.get_title().equals(title)){
+                result.add(film);
+            }
+        }
+        return result;
     }
+
+
+    public List<Film> get_film_by_year(int year){
+        List<Film> films_new = this.films;
+        List<Film> result = new ArrayList<>();
+        for (Film film : films_new){
+            if (film.get_year() == year){
+                result.add(film);
+            }
+        }
+        return result;
+    }
+
+
+    public List<Film> get_film_by_country(String country){
+        List<Film> films_new = this.films;
+        List<Film> result = new ArrayList<>();
+        for (Film film : films_new){
+            if (film.get_country().equals(country)){
+                result.add(film);
+            }
+        }
+        return result;
+    }
+
+
+    public List<Actor> get_actor_by_name(String firstname, String lastname){
+        List<Actor> actors_new = this.actors;
+        List<Actor> result = new ArrayList<>();
+        for (Actor actor : actors_new){
+            if(firstname.isBlank()){
+                if (actor.get_lastname().equals(lastname)){
+                    result.add(actor);
+                }
+            }
+            else if(lastname.isBlank()){
+                if (actor.get_firstname().equals(firstname)){
+                    result.add(actor);
+                }
+            }
+            else {
+                if (actor.get_firstname().equals(firstname) && actor.get_lastname().equals(lastname)){
+                    result.add(actor);
+                }
+            }
+        }
+        return result;
+    }
+
 
     public void addPropertyChangeListener(PropertyChangeListener pcl) {
         support.addPropertyChangeListener(pcl);
     }
+
 
     public void removePropertyChangeListener(PropertyChangeListener pcl) {
         support.removePropertyChangeListener(pcl);

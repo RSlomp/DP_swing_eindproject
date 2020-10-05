@@ -6,15 +6,15 @@ import java.util.List;
 public class Actor extends Person{
     private List<Role> roles = new ArrayList<>();
 
-    public Actor(String firstname, String lastname, int dob_year, int dob_month, int dob_day) {
+    protected Actor(String firstname, String lastname, int dob_year, int dob_month, int dob_day) {
         super(firstname, lastname, dob_year, dob_month, dob_day);
     }
 
-    public void add_role(Film film, String role_name, String role_type){
+    protected void add_role(Film film, String role_name, String role_type){
         this.roles.add(new Role(film, role_name, role_type));
     }
 
-    public List<Role> get_roles_by_film(Film film){
+    protected List<Role> get_roles_by_film(Film film){
         List<Role> roles = new ArrayList<>();
 
         for (int i = 0; i < this.roles.size(); i++) {
@@ -25,7 +25,7 @@ public class Actor extends Person{
         return roles;
     }
 
-    public List<Role> get_roles_by_name(String role_name){
+    protected List<Role> get_roles_by_name(String role_name){
         List<Role> roles = new ArrayList<>();
 
         for (int i = 0; i < this.roles.size(); i++) {
@@ -36,7 +36,7 @@ public class Actor extends Person{
         return roles;
     }
 
-    public List<Role> get_roles_by_type(String role_type){
+    protected List<Role> get_roles_by_type(String role_type){
         List<Role> roles = new ArrayList<>();
 
         for (int i = 0; i < this.roles.size(); i++) {
@@ -58,15 +58,15 @@ public class Actor extends Person{
             this.type = type;
         }
 
-        public Film get_film(){
+        protected Film get_film(){
             return this.film;
         }
 
-        public String get_name() {
+        protected String get_name() {
             return this.name;
         }
 
-        public String get_type() {
+        protected String get_type() {
             return this.type;
         }
     }

@@ -8,6 +8,7 @@ import robertslomp.filmdatabase.view.MdbView;
 import java.awt.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.List;
 
 public class Controller implements PropertyChangeListener {
 
@@ -18,13 +19,25 @@ public class Controller implements PropertyChangeListener {
         model.addPropertyChangeListener(this);
     }
 
-    /*public Actor[] get_actors(){
-        return model.get_actors();
+
+    public void create_actor(String firstname, String lastname, int[] dob){
+        model.create_actor(firstname, lastname, dob[0], dob[1], dob[2]);
     }
 
-    public Actor[] get_companies(){
-        return model.get_actors();
-    }*/
+
+    public void create_film(String title, int year, String country, int budget, List<Actor> actors){
+        model.create_film(title, year, country, budget, actors);
+    }
+
+
+    public List<Actor> get_actor_by_name(String firstname, String lastname){
+        return model.get_actor_by_name(firstname, lastname);
+    }
+
+
+    public List<Actor> get_all_actors(){
+        return model.get_all_actors();
+    }
 
 
     @Override

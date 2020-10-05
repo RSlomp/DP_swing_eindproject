@@ -12,11 +12,13 @@ public class ElementsFactory {
         return frame;
     }
 
+
     public static JLabel gen_label(String text, int x, int y, int width, int height){
         JLabel label = new JLabel(text);
         label.setBounds(x, y, width, height);
         return label;
     }
+
 
     public static JTextField gen_text_field(int x, int y, int width, int height){
         JTextField text_field = new JTextField();
@@ -24,11 +26,13 @@ public class ElementsFactory {
         return text_field;
     }
 
+
     public static JComboBox<String> gen_combo_box(String[] values, int x, int y, int width, int height){
         JComboBox<String> box = new JComboBox<>(values);
         box.setBounds(x, y, width, height);
         return box;
     }
+
 
     public static JPanel gen_checkbox_list(String[] values, int x, int y, int width, int height){
         JPanel mainPanel = new JPanel();
@@ -44,6 +48,7 @@ public class ElementsFactory {
         mainPanel.setBounds(x, y, width+20, height+20);
         return mainPanel;
     }
+
 
     public static JButton gen_button(String text, int x, int y, int width, int height){
         JButton button = new JButton(text);

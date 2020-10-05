@@ -8,15 +8,14 @@ public class Film {
     private final int year;
     private final String country;
     private final int budget;
-    private final ProductionCompany production_company;
+    //private final ProductionCompany production_company;
     private List<Actor> actors = new ArrayList<>();
 
-    public Film(String title, int year, String country, int budget, ProductionCompany production_company, List<Actor> actors) {
+    public Film(String title, int year, String country, int budget, List<Actor> actors) {
         this.title = title;
         this.year = year;
         this.country = country;
         this.budget = budget;
-        this.production_company = production_company;
         this.actors = actors;
     }
 
@@ -36,17 +35,14 @@ public class Film {
         return budget;
     }
 
-    public ProductionCompany get_production_company(){
-        return this.production_company;
-    }
 
     public List<Actor> get_all_actors(){
         return actors;
     }
 
-    public Actor get_actor_by_name(String fullname){
+    public Actor get_actor_by_name(String firstname, String lastname){
         for (Actor actor : this.actors) {
-            if (actor.get_fullname().equals(fullname)) {
+            if (actor.get_firstname().equals(firstname) && actor.get_lastname().equals(lastname)) {
                 return actor;
             }
         }

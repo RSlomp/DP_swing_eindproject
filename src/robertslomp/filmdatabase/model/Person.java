@@ -3,23 +3,23 @@ package robertslomp.filmdatabase.model;
 public class Person {
     private String firstname;
     private String lastname;
-    private DOB date_of_birth;
+    private final DOB date_of_birth;
 
-    public Person(String firstname, String lastname, int dob_year, int dob_month, int dob_day){
+    protected Person(String firstname, String lastname, int dob_year, int dob_month, int dob_day){
         this.firstname = firstname;
         this.lastname = lastname;
         this.date_of_birth = new DOB(dob_year, dob_month, dob_day);
     }
-    public Person(String name, int dob_year, int dob_month, int dob_day){
+    protected Person(String name, int dob_year, int dob_month, int dob_day){
         set_name(name);
         this.date_of_birth = new DOB(dob_year, dob_month, dob_day);
     }
 
-    public String get_firstname(){
+    protected String get_firstname(){
         return this.firstname;
     }
 
-    public String get_lastname(){
+    protected String get_lastname(){
         return this.lastname;
     }
 
@@ -34,9 +34,9 @@ public class Person {
     }
 
     private static class DOB{
-        private int year;
-        private int month;
-        private int day;
+        private final int year;
+        private final int month;
+        private final int day;
 
         protected DOB(int year, int month, int day){
             this.day = day;
@@ -44,19 +44,19 @@ public class Person {
             this.year = year;
         }
 
-        public int get_day(){
+        protected int get_day(){
             return this.day;
         }
 
-        public int get_month(){
+        protected int get_month(){
             return this.month;
         }
 
-        public int get_year(){
+        protected int get_year(){
             return this.year;
         }
 
-        public String get_date(){
+        protected String get_date(){
             return this.year + "-" + this.month + "-" + this.day;
         }
     }
