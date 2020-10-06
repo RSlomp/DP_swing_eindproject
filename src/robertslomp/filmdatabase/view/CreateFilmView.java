@@ -2,7 +2,6 @@ package robertslomp.filmdatabase.view;
 
 import robertslomp.filmdatabase.controller.Controller;
 import robertslomp.filmdatabase.model.Actor;
-import robertslomp.filmdatabase.model.MdbModel;
 import robertslomp.filmdatabase.util.CheckList;
 import robertslomp.filmdatabase.util.ElementsFactory;
 
@@ -23,7 +22,6 @@ public class CreateFilmView extends View {
     private final Actor[] actors;
     private CheckList actors_check;
     private JButton execute_button;
-    private final MdbModel model = new MdbModel();
     private final Controller controller = new Controller();
 
 
@@ -36,7 +34,7 @@ public class CreateFilmView extends View {
 
 
     public void create_object(String title, int year, String country, int budget, List<Actor> actors){
-        model.create_film(title, year, country, budget, actors);
+        controller.create_film(title, year, country, budget, actors);
     }
 
 
