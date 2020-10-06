@@ -28,7 +28,7 @@ public class CheckList extends JPanel {
         }
     }
 
-    public List<String> get_selected_actor(){
+    public List<String> get_selected_items(){
         List<String> selected = new ArrayList<>();
         for(JCheckBox box : this.check_boxes){
             if(box.isSelected()){
