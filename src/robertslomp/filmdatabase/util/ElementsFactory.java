@@ -34,19 +34,19 @@ public class ElementsFactory {
     }
 
 
-    public static JPanel gen_checkbox_list(String[] values, int x, int y, int width, int height){
-        JPanel mainPanel = new JPanel();
+    public static CheckList gen_checkbox_list(String[] values, int x, int y, int width, int height){
+        //JPanel mainPanel = new JPanel();
         CheckList list = new CheckList();
         list.fill_list(values);
         list.setBounds(0, 0, width, height);
-        JPanel newPanel = new JPanel();
+        /*JPanel newPanel = new JPanel();
         newPanel.add(list);
         newPanel.setBounds(0, 0, width+10, height+10);
         JScrollPane pane = new JScrollPane(newPanel);
         pane.setBounds(0, 0, width+15, height+15);
         mainPanel.add(pane);
-        mainPanel.setBounds(x, y, width+20, height+20);
-        return mainPanel;
+        mainPanel.setBounds(x, y, width+20, height+20);*/
+        return list;
     }
 
 
