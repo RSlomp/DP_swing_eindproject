@@ -7,7 +7,7 @@ import java.awt.*;
 /**
  * Factory Pattern for UI elements.
  */
-public class ElementsFactory {
+public interface ElementsFactory {
     /**
      * Creates a new frame to specification.
      * @param title Frame title.
@@ -18,7 +18,7 @@ public class ElementsFactory {
      * @return Created frame.
      * @see JFrame
      */
-    public static JFrame gen_frame(String title, int x, int y, int width, int height){
+    static JFrame gen_frame(String title, int x, int y, int width, int height){
         JFrame frame = new JFrame(title);
         frame.setBounds(x, y, width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +37,7 @@ public class ElementsFactory {
      * @return Created label.
      * @see JLabel
      */
-    public static JLabel gen_label(String text, int x, int y, int width, int height){
+    static JLabel gen_label(String text, int x, int y, int width, int height){
         JLabel label = new JLabel(text);
         label.setBounds(x, y, width, height);
         return label;
@@ -53,7 +53,7 @@ public class ElementsFactory {
      * @return Created text field.
      * @see JTextField
      */
-    public static JTextField gen_text_field(int x, int y, int width, int height){
+    static JTextField gen_text_field(int x, int y, int width, int height){
         JTextField text_field = new JTextField();
         text_field.setBounds(x, y, width, height);
         return text_field;
@@ -70,7 +70,7 @@ public class ElementsFactory {
      * @return Created combo-box.
      * @see JComboBox
      */
-    public static JComboBox<String> gen_combo_box(String[] values, int x, int y, int width, int height){
+    static JComboBox<String> gen_combo_box(String[] values, int x, int y, int width, int height){
         JComboBox<String> box = new JComboBox<>(values);
         box.setBounds(x, y, width, height);
         return box;
@@ -87,7 +87,7 @@ public class ElementsFactory {
      * @return Created Checklist.
      * @see CheckList
      */
-    public static CheckList gen_checkbox_list(String[] values, int x, int y, int width, int height){
+    static CheckList gen_checkbox_list(String[] values, int x, int y, int width, int height){
         //JPanel mainPanel = new JPanel();
         CheckList list = new CheckList();
         list.fill_list(values);
@@ -113,7 +113,7 @@ public class ElementsFactory {
      * @return Created button.
      * @see JButton
      */
-    public static JButton gen_button(String text, int x, int y, int width, int height){
+    static JButton gen_button(String text, int x, int y, int width, int height){
         JButton button = new JButton(text);
         button.setBackground(Color.GRAY);
         button.setForeground(Color.BLACK);
