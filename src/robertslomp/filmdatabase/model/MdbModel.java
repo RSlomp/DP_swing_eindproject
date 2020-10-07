@@ -21,11 +21,6 @@ public class MdbModel {
     }
 
 
-    public List<Actor> get_all_actors(){
-        return this.actors;
-    }
-
-
     public void create_film(String title, int year, String country, int budget, List<Actor> actors){
         List<Film> films_new = this.films;
         films_new.add(new Film(title, year, country, budget, actors));
@@ -75,6 +70,11 @@ public class MdbModel {
             }
         }
         return result;
+    }
+
+
+    public List<Actor> get_all_actors(){
+        return this.actors;
     }
 
 
