@@ -82,12 +82,12 @@ public class MdbModel {
         List<Actor> actors_new = this.actors;
         List<Actor> result = new ArrayList<>();
         for (Actor actor : actors_new){
-            if(firstname.isBlank()){
+            if(firstname.isEmpty()){
                 if (actor.get_lastname().equals(lastname)){
                     result.add(actor);
                 }
             }
-            else if(lastname.isBlank()){
+            else if(lastname.isEmpty()){
                 if (actor.get_firstname().equals(firstname)){
                     result.add(actor);
                 }
