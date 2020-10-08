@@ -22,12 +22,13 @@ public class CreateFilmView extends View {
     private final Actor[] actors;
     private CheckList actors_check;
     private JButton execute_button;
-    private final Controller controller = new Controller();
+    private final Controller controller;
 
 
-    public CreateFilmView(String title) {
+    public CreateFilmView(String title, Controller controller) {
         super(title);
         this.window_title = title;
+        this.controller = controller;
         this.actors = controller.get_all_actors().toArray(new Actor[0]);
         initialize();
     }

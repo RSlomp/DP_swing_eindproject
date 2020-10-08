@@ -15,11 +15,12 @@ public class CreateActorView extends View {
     private JComboBox<String> month_box;
     private JComboBox<String> year_box;
     private JButton execute_button;
-    private final Controller controller = new Controller();
+    private final Controller controller;
 
-    public CreateActorView(String title) {
+    public CreateActorView(String title, Controller controller) {
         super(title);
         this.title = title;
+        this.controller = controller;
         initialize();
         execute_button.addActionListener(this);
     }
