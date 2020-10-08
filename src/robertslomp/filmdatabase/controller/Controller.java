@@ -13,7 +13,7 @@ import java.util.List;
 public class Controller implements PropertyChangeListener {
 
     private final MdbModel model = new MdbModel();
-    private final MdbView view = new MdbView();
+    private final MdbView view = new MdbView(this);
 
     public Controller(){
         model.addPropertyChangeListener(this);
@@ -49,15 +49,13 @@ public class Controller implements PropertyChangeListener {
 
     public static void main(String[] args)
     {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Controller controller = new Controller();
-                    CreateFilmView myWindow = controller.view.create_film_view;
-                    myWindow.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        EventQueue.invokeLater(() -> {
+            try {
+                Controller controller = new Controller();
+                CreateFilmView myWindow = controller.view.get_create_film_view();
+                myWindow.frame.setVisible(true);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
     }
