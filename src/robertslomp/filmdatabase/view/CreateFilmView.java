@@ -134,6 +134,10 @@ public class CreateFilmView extends View {
         this.actors_check = ElementsFactory.gen_checkbox_list(actors, 168, 177, 80, (25 * actors.length));
         frame.getContentPane().add(this.actors_check);
 
+        this.execute_button = ElementsFactory.gen_button("Create", 25, 150, 290, 30);
+        this.frame.getContentPane().add(this.execute_button);
+        this.execute_button.addActionListener(this);
+
     }
 
 

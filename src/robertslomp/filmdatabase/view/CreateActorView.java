@@ -100,6 +100,7 @@ public class CreateActorView extends View {
 
         this.execute_button = ElementsFactory.gen_button("Create", 25, 150, 290, 30);
         this.frame.getContentPane().add(this.execute_button);
+        this.execute_button.addActionListener(this);
     }
 
 
