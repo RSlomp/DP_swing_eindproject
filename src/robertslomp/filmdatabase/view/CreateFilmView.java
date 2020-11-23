@@ -1,26 +1,21 @@
 package robertslomp.filmdatabase.view;
 
 import robertslomp.filmdatabase.controller.Controller;
-import robertslomp.filmdatabase.model.Actor;
-import robertslomp.filmdatabase.util.CheckList;
 import robertslomp.filmdatabase.util.ElementsFactory;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class CreateFilmView extends View {
     private final String window_title;
     public JFrame frame;
+    private JPanel panel;
     private JTextField title_txt;
     private JTextField year_txt;
     private JTextField budget_txt;
     private JComboBox<String> country_box;
-    private final Actor[] actors;
-    private CheckList actors_check;
     private JButton execute_button;
     private final Controller controller;
 
@@ -29,13 +24,28 @@ public class CreateFilmView extends View {
         super(title);
         this.window_title = title;
         this.controller = controller;
-        this.actors = controller.get_all_actors().toArray(new Actor[0]);
         initialize();
     }
 
 
-    public void create_object(String title, int year, String country, int budget, List<Actor> actors){
-        controller.create_film(title, year, country, budget, actors);
+    public void create_object(String title, int year, String country, int budget){
+        controller.create_film(title, year, country, budget);
+    }
+
+
+    public void refresh_frame(){
+        //this.frame.removeAll();
+//        this.removeAll();
+//        super.removeAll();
+        this.frame.revalidate();
+//        this.revalidate();
+//        super.revalidate();
+        this.frame.repaint();
+//        this.repaint();
+//        super.repaint();
+        this.frame.revalidate();
+        //this.panel.setVisible(true);
+        SwingUtilities.updateComponentTreeUI(this.frame);
     }
 
 
@@ -49,15 +59,9 @@ public class CreateFilmView extends View {
         int year = get_int.get_value(year_txt);
         String country = get_box_item.get_value(country_box);
         int budget = get_int.get_value(budget_txt);
-        List<Actor> actors = new ArrayList<>();
-        List<String> selected_actor_names = this.actors_check.get_selected_items();
 
-        for (String selected_name : selected_actor_names){
-            String[] names = selected_name.split(" ");
-            actors.addAll(this.controller.get_actor_by_name(names[0], names[1]));
-        }
-
-        create_object(title, year, country, budget, actors);
+        refresh_frame();
+        create_object(title, year, country, budget);
     }
 
 
@@ -102,52 +106,43 @@ public class CreateFilmView extends View {
                 "United States", "United States Minor Outlying Islands", "Uruguay", "Uzbekistan", "Vanuatu",
                 "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)",
                 "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"};
-        String[] actors = actors_to_string(this.actors);
 
-        this.frame = ElementsFactory.gen_frame(this.window_title, 50, 50, 400, 400 + (25 * actors.length));
+        this.frame = ElementsFactory.gen_frame(this.window_title, 50, 50, 400, 400);
+
+        this.panel = ElementsFactory.gen_panel(0, 0, 400, 400);
+        //this.frame.add(this.panel);
+
 
         JLabel title_label = ElementsFactory.gen_label("Title", 25, 31, 86, 14);
-        frame.getContentPane().add(title_label);
+        this.frame.add(title_label);
 
         JLabel budget_label = ElementsFactory.gen_label("Budget", 25, 68, 86, 14);
-        frame.getContentPane().add(budget_label);
+        this.frame.add(budget_label);
 
         JLabel country_label = ElementsFactory.gen_label("Country", 25, 105, 86, 14);
-        frame.getContentPane().add(country_label);
+        this.frame.add(country_label);
 
         JLabel year_label = ElementsFactory.gen_label("Year", 25, 142, 86, 14);
-        frame.getContentPane().add(year_label);
+        this.frame.add(year_label);
 
         this.title_txt = ElementsFactory.gen_text_field(168, 28, 146, 20);
-        frame.getContentPane().add(this.title_txt);
+        this.frame.add(this.title_txt);
         this.title_txt.setColumns(10);
 
         this.budget_txt = ElementsFactory.gen_text_field(168, 65, 146, 20);
-        frame.getContentPane().add(this.budget_txt);
+        this.frame.add(this.budget_txt);
         this.budget_txt.setColumns(10);
 
         this.country_box = ElementsFactory.gen_combo_box(countries, 168, 102, 170, 20);
-        frame.getContentPane().add(this.country_box);
+        this.frame.add(this.country_box);
 
         this.year_txt = ElementsFactory.gen_text_field(168, 139, 170, 20);
-        frame.getContentPane().add(this.year_txt);
+        this.frame.add(this.year_txt);
 
-        this.actors_check = ElementsFactory.gen_checkbox_list(actors, 168, 177, 80, (25 * actors.length));
-        frame.getContentPane().add(this.actors_check);
-
-        this.execute_button = ElementsFactory.gen_button("Create", 25, 150, 290, 30);
-        this.frame.getContentPane().add(this.execute_button);
+        this.execute_button = ElementsFactory.gen_button("Create", 25, 215, 290, 30);
+        this.frame.add(this.execute_button);
         this.execute_button.addActionListener(this);
 
-    }
-
-
-    private String[] actors_to_string(Actor[] actors) {
-        String[] actor_names = new String[actors.length];
-        for (int i = 0; i < actors.length; i++) {
-            actor_names[i] = actors[i].get_fullname();
-        }
-        return actor_names;
     }
 }
 

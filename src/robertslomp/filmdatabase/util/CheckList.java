@@ -41,10 +41,12 @@ public class CheckList extends JPanel {
     public void fill_list(String[] values){
         int x = 0;
         int y = 177;
+
         for (String value : values) {
             add_checkbox(value, x, y, 170, 20);
             y = y + 22;
         }
+        refresh_panel();
     }
 
     /**
@@ -59,5 +61,15 @@ public class CheckList extends JPanel {
             }
         }
         return selected;
+    }
+
+
+    private void refresh_panel(){
+        this.removeAll();
+        super.removeAll();
+        this.revalidate();
+        super.revalidate();
+        this.repaint();
+        super.repaint();
     }
 }

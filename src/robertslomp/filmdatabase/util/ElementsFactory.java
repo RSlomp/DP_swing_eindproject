@@ -27,6 +27,16 @@ public interface ElementsFactory {
     }
 
 
+    static JPanel gen_panel(int x, int y, int width, int height){
+        JPanel panel = new JPanel(new GridLayout(0, 2));
+        panel.setBounds(x, y, width, height);
+
+        //panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //panel.getContentPane().setLayout(null);
+        return panel;
+    }
+
+
     /**
      * Creates a new label to specification.
      * @param text The text to be displayed.
