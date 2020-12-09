@@ -27,6 +27,11 @@ public class MdbModel {
     }
 
 
+    public List<Film> get_all_films(){
+        return this.films;
+    }
+
+
     public List<Film> get_film_by_title(String title){
         List<Film> films_new = this.films;
         List<Film> result = new ArrayList<>();

@@ -1,5 +1,6 @@
 package robertslomp.filmdatabase.view;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,6 +12,14 @@ import java.awt.event.WindowListener;
 public abstract class View extends Frame implements WindowListener, ActionListener {
     public View(String title) {
         super(title);
+    }
+
+    public void refresh_frame(){
+        //this.removeAll();
+        this.revalidate();
+        this.repaint();
+        this.revalidate();
+        SwingUtilities.updateComponentTreeUI(this);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -39,6 +48,6 @@ public abstract class View extends Frame implements WindowListener, ActionListen
     public void windowClosed(WindowEvent e) {
     }
 
-    protected void initialize() {
+    protected void initialize(String title) {
     }
 }

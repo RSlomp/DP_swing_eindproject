@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 
 
 public class CreateFilmView extends View {
-    private final String window_title;
     public JFrame frame;
     private JPanel panel;
     private JTextField title_txt;
@@ -22,9 +21,8 @@ public class CreateFilmView extends View {
 
     public CreateFilmView(String title, Controller controller) {
         super(title);
-        this.window_title = title;
         this.controller = controller;
-        initialize();
+        initialize(title);
     }
 
 
@@ -32,19 +30,15 @@ public class CreateFilmView extends View {
         controller.create_film(title, year, country, budget);
     }
 
-
+    @Override
     public void refresh_frame(){
         //this.frame.removeAll();
 //        this.removeAll();
-//        super.removeAll();
         this.frame.revalidate();
 //        this.revalidate();
-//        super.revalidate();
         this.frame.repaint();
 //        this.repaint();
-//        super.repaint();
         this.frame.revalidate();
-        //this.panel.setVisible(true);
         SwingUtilities.updateComponentTreeUI(this.frame);
     }
 
@@ -66,7 +60,7 @@ public class CreateFilmView extends View {
 
 
     @Override
-    protected void initialize() {
+    protected void initialize(String title) {
         String[] countries = new String[]{"Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola",
                 "Anguilla", "Antarctica", "Antigua and Barbuda", "Argentina", "Armenia", "Aruba", "Australia",
                 "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium",
@@ -107,9 +101,9 @@ public class CreateFilmView extends View {
                 "Venezuela", "Vietnam", "Virgin Islands (British)", "Virgin Islands (U.S.)",
                 "Wallis and Futuna Islands", "Western Sahara", "Yemen", "Yugoslavia", "Zambia", "Zimbabwe"};
 
-        this.frame = ElementsFactory.gen_frame(this.window_title, 50, 50, 400, 400);
+        this.frame = ElementsFactory.gen_frame(title, 50, 50, 400, 400);
 
-        this.panel = ElementsFactory.gen_panel(0, 0, 400, 400);
+        this.panel = ElementsFactory.gen_panel(0, 0, 400, 400, 2);
         //this.frame.add(this.panel);
 
 

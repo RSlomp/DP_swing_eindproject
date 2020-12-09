@@ -27,8 +27,9 @@ public interface ElementsFactory {
     }
 
 
-    static JPanel gen_panel(int x, int y, int width, int height){
-        JPanel panel = new JPanel(new GridLayout(0, 2));
+    static JPanel gen_panel(int x, int y, int width, int height, int columns){
+        //JPanel panel = new JPanel(new GridLayout(0, columns));
+        JPanel panel = new JPanel(new BorderLayout());
         panel.setBounds(x, y, width, height);
 
         //panel.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

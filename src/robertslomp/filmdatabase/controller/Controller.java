@@ -1,9 +1,11 @@
 package robertslomp.filmdatabase.controller;
 
+import robertslomp.filmdatabase.model.Film;
 import robertslomp.filmdatabase.model.MdbModel;
 import robertslomp.filmdatabase.view.MdbView;
 
 import java.awt.*;
+import java.util.List;
 
 public class Controller /*implements PropertyChangeListener*/ {
 
@@ -16,7 +18,27 @@ public class Controller /*implements PropertyChangeListener*/ {
 
 
     public void create_film(String title, int year, String country, int budget){
-        model.create_film(title, year, country, budget);
+        this.model.create_film(title, year, country, budget);
+        this.fill_checklist();
+    }
+
+
+    public void fill_checklist(){
+        List<Film> films = this.model.get_all_films();
+        String[] film_titles = new String[100];
+        int i = 0;
+
+        for (Film film : films){
+            film_titles[i] = film.get_title();
+            i++;
+        }
+
+        this.view.film_list_view.add_items(film_titles);
+    }
+
+
+    public List<Film> get_all_films(){
+        return model.get_all_films();
     }
 
 
