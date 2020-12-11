@@ -22,7 +22,7 @@ public interface ElementsFactory {
         JFrame frame = new JFrame(title);
         frame.setBounds(x, y, width, height);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(null);
+        //frame.getContentPane().setLayout(null);
         return frame;
     }
 

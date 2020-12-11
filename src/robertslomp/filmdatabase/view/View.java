@@ -1,5 +1,7 @@
 package robertslomp.filmdatabase.view;
 
+import robertslomp.filmdatabase.util.ElementsFactory;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,24 +11,26 @@ import java.awt.event.WindowListener;
 
 
 //Template Pattern
-public abstract class View extends Frame implements WindowListener, ActionListener {
+public abstract class View implements WindowListener, ActionListener {
+    protected JFrame frame;
+
     public View(String title) {
-        super(title);
+        this.frame = ElementsFactory.gen_frame(title, 0, 0, 400, 500);
     }
 
     public void refresh_frame(){
-        //this.removeAll();
-        this.revalidate();
-        this.repaint();
-        this.revalidate();
-        SwingUtilities.updateComponentTreeUI(this);
+        //this.frame.removeAll();
+        this.frame.revalidate();
+        this.frame.repaint();
+        this.frame.revalidate();
+        SwingUtilities.updateComponentTreeUI(this.frame);
     }
 
     public void actionPerformed(ActionEvent e) {
     }
 
     public void windowClosing(WindowEvent e) {
-        dispose();
+        this.frame.dispose();
         System.exit(0);
     }
 

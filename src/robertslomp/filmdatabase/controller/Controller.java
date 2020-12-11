@@ -20,6 +20,7 @@ public class Controller /*implements PropertyChangeListener*/ {
     public void create_film(String title, int year, String country, int budget){
         this.model.create_film(title, year, country, budget);
         this.fill_checklist();
+        this.view.country_bar_chart_view.update_chart();
     }
 
 
